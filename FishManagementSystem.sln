@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishManagementSystem.Server", "FishManagementSystem.Server\FishManagementSystem.Server.csproj", "{6D49ABEC-9C30-4058-9D4A-B590BB62ED52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishManagementSystem.Server", "FishManagementSystem.Server\FishManagementSystem.Server.csproj", "{6D49ABEC-9C30-4058-9D4A-B590BB62ED52}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "fishmanagementsystem.client", "fishmanagementsystem.client\fishmanagementsystem.client.esproj", "{5887E0BB-5D69-4C41-AA78-F3E4F599DC78}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "FishManagementSystem.Database", "FishManagementSystem.Database\FishManagementSystem.Database.sqlproj", "{E5E7F6BC-A0B3-4A41-B424-EE584CE03553}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishManagementSystem.Models", "FishManagementSystem.Models\FishManagementSystem.Models.csproj", "{AB21C755-A33B-4A7F-B33C-3FF59BC0D508}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishManagementSystem.SqlSugar", "FishManagementSystem.SqlSugar\FishManagementSystem.SqlSugar.csproj", "{DA68F37C-9FCA-467D-BB5F-C028070299AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +29,20 @@ Global
 		{5887E0BB-5D69-4C41-AA78-F3E4F599DC78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5887E0BB-5D69-4C41-AA78-F3E4F599DC78}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5887E0BB-5D69-4C41-AA78-F3E4F599DC78}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E5E7F6BC-A0B3-4A41-B424-EE584CE03553}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5E7F6BC-A0B3-4A41-B424-EE584CE03553}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5E7F6BC-A0B3-4A41-B424-EE584CE03553}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E5E7F6BC-A0B3-4A41-B424-EE584CE03553}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5E7F6BC-A0B3-4A41-B424-EE584CE03553}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5E7F6BC-A0B3-4A41-B424-EE584CE03553}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{AB21C755-A33B-4A7F-B33C-3FF59BC0D508}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB21C755-A33B-4A7F-B33C-3FF59BC0D508}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB21C755-A33B-4A7F-B33C-3FF59BC0D508}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB21C755-A33B-4A7F-B33C-3FF59BC0D508}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA68F37C-9FCA-467D-BB5F-C028070299AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA68F37C-9FCA-467D-BB5F-C028070299AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA68F37C-9FCA-467D-BB5F-C028070299AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA68F37C-9FCA-467D-BB5F-C028070299AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

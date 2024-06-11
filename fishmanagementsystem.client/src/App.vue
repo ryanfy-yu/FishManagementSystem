@@ -1,47 +1,60 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { ElConfigProvider } from 'element-plus'
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
+
+
+import HomeMenu from '@/components/HomeMenu.vue';
+
+export default defineComponent({
+  components: {
+    ElConfigProvider,
+  },
+  setup() {
+    return {
+      zIndex: 3000,
+      size: 'small',
+      locale: zhCn
+    }
+  },
+})
 </script>
 
+<!-- <template>
+  <el-config-provider :size="size" :z-index="zIndex" :locale="zhCn">
+    hello
+    <header>
+      <nav>
+        <RouterLink to="/" class="nav-link">Home</RouterLink>
+        <RouterLink to="/blog-create" class="nav-link">Create</RouterLink>
+      </nav>
+    </header>
+
+    <RouterView />
+  </el-config-provider>
+</template> -->
+
+
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <el-config-provider :size="size" :z-index="zIndex" :locale="zhCn">
+    <div class="common-layout">
+      <el-container>
+        <el-aside>
+          <HomeMenu />
+        </el-aside>
+        <el-container>
+          <el-header style="height: 10vh;">Header</el-header>
+          <el-main style="height: 85vh;">
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+            <RouterView />
+
+          </el-main>
+
+          <el-footer style="height: 5vh;">
+            <p style="text-align: center;margin: 1vh;">Ryan</p>
+          </el-footer>
+        </el-container>
+      </el-container>
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  </el-config-provider>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
