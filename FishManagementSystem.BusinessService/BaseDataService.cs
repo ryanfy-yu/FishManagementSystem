@@ -9,46 +9,40 @@ using System.Linq.Expressions;
 
 namespace FishManagementSystem.BusinessService
 {
-    public class DataService : IDisposable, IDataService
+    public class BaseDataService : IDisposable, IBaseDataService
     {
 
-        private readonly ISqlSugarClient db;
+        protected readonly ISqlSugarClient _db;
 
-        public DataService()
+
+        public BaseDataService(string dbConnectionString)
         {
-
-            var config = new ConfigurationBuilder()
-               .SetBasePath(Directory.GetCurrentDirectory())
-               .AddJsonFile("appsettings.json").Build();
-
-            string dbConnectionString = config.GetConnectionString("FishDB") ?? string.Empty;
-
-            db = new SqlSugarSetup(dbConnectionString).getDB();
+            _db = new SqlSugarSetup(dbConnectionString).getDB();
         }
 
         public int GetCount<T>() where T : IModel, new()
         {
-            return db.Queryable<T>().Where(o => o.IsDeleted != true).Count();
+            return _db.Queryable<T>().Where(o => o.IsDeleted != true).Count();
         }
 
         public int GetCount<T>(Expression<Func<T, bool>> exp) where T : IModel, new()
         {
-            return db.Queryable<T>().Where(o => o.IsDeleted != true).Where(exp).Count();
+            return _db.Queryable<T>().Where(o => o.IsDeleted != true).Where(exp).Count();
         }
 
         public T Get<T>(string id) where T : IModel, new()
         {
-            return db.Queryable<T>().Where(it => it.Id == id && it.IsDeleted != true).First();
+            return _db.Queryable<T>().Where(it => it.Id == id && it.IsDeleted != true).First();
         }
 
         public List<T> Get<T>() where T : IModel, new()
         {
-            return db.Queryable<T>().Where(it => it.IsDeleted != true).ToList();
+            return _db.Queryable<T>().Where(it => it.IsDeleted != true).ToList();
         }
 
         public List<T> Get<T>(Expression<Func<T, bool>> exp) where T : IModel, new()
         {
-            return db.Queryable<T>().Where(it => it.IsDeleted != true).Where(exp).ToList();
+            return _db.Queryable<T>().Where(it => it.IsDeleted != true).Where(exp).ToList();
         }
 
 
@@ -59,18 +53,17 @@ namespace FishManagementSystem.BusinessService
 
             if (exp != null)
             {
-
                 if (orderbyModerList != null && orderbyModerList.Count > 0)
                 {
 
                     List<OrderByModel> _orderbyModerList = orderbyModerList.OfType<OrderByModel>().ToList();
 
-                    resultList = db.Queryable<T>().Where(it => it.IsDeleted != true).Where(exp).OrderBy(_orderbyModerList).ToPageList(pagenumber, pageSize, ref totalCount, ref totalPage);
+                    resultList = _db.Queryable<T>().Where(it => it.IsDeleted != true).Where(exp).OrderBy(_orderbyModerList).ToPageList(pagenumber, pageSize, ref totalCount, ref totalPage);
 
                 }
                 else
                 {
-                    resultList = db.Queryable<T>().Where(it => it.IsDeleted != true).Where(exp).OrderBy(o => SqlFunc.Desc(o.CreateDate)).ToPageList(pagenumber, pageSize, ref totalCount, ref totalPage);
+                    resultList = _db.Queryable<T>().Where(it => it.IsDeleted != true).Where(exp).OrderBy(o => SqlFunc.Desc(o.CreateDate)).ToPageList(pagenumber, pageSize, ref totalCount, ref totalPage);
                 }
             }
             else
@@ -79,12 +72,12 @@ namespace FishManagementSystem.BusinessService
                 {
                     List<OrderByModel> _orderbyModerList = orderbyModerList.OfType<OrderByModel>().ToList();
 
-                    resultList = db.Queryable<T>().Where(it => it.IsDeleted != true).OrderBy(_orderbyModerList).ToPageList(pagenumber, pageSize, ref totalCount, ref totalPage);
+                    resultList = _db.Queryable<T>().Where(it => it.IsDeleted != true).OrderBy(_orderbyModerList).ToPageList(pagenumber, pageSize, ref totalCount, ref totalPage);
 
                 }
                 else
                 {
-                    resultList = db.Queryable<T>().Where(it => it.IsDeleted != true).OrderBy(o => SqlFunc.Desc(o.CreateDate)).ToPageList(pagenumber, pageSize, ref totalCount, ref totalPage);
+                    resultList = _db.Queryable<T>().Where(it => it.IsDeleted != true).OrderBy(o => SqlFunc.Desc(o.CreateDate)).ToPageList(pagenumber, pageSize, ref totalCount, ref totalPage);
                 }
             }
 
@@ -95,13 +88,13 @@ namespace FishManagementSystem.BusinessService
         public bool Add<T>(T model) where T : IModel, new()
         {
             model.CreateDate = DateTime.Now;
-            return db.Insertable<T>(model).ExecuteCommand() > 0;
+            return _db.Insertable<T>(model).ExecuteCommand() > 0;
         }
 
         public int Add<T>(List<T> list) where T : IModel, new()
         {
             list.ForEach(o => o.CreateDate = DateTime.Now);
-            return db.Insertable(list).ExecuteCommand();
+            return _db.Insertable(list).ExecuteCommand();
         }
 
 
@@ -111,7 +104,7 @@ namespace FishManagementSystem.BusinessService
             model.IsDeleted = true;
             model.UpdateDate = DateTime.Now;
 
-            return db.Updateable<T>(model).ExecuteCommand() > 0;
+            return _db.Updateable<T>(model).ExecuteCommand() > 0;
 
         }
 
@@ -122,26 +115,28 @@ namespace FishManagementSystem.BusinessService
                 item.IsDeleted = true;
                 item.UpdateDate = DateTime.Now;
             }
-            return db.Updateable<T>(list).ExecuteCommand();
+            return _db.Updateable<T>(list).ExecuteCommand();
         }
 
         public bool Update<T>(T model) where T : IModel, new()
         {
             model.UpdateDate = DateTime.Now;
-            return db.Updateable<T>(model).ExecuteCommand() > 0;
+            return _db.Updateable<T>(model).ExecuteCommand() > 0;
         }
 
         public int Update<T>(List<T> list) where T : IModel, new()
         {
             list.ForEach(o => o.UpdateDate = DateTime.Now);
-            return db.Updateable<T>(list).ExecuteCommand();
+            return _db.Updateable<T>(list).ExecuteCommand();
         }
 
         public void Dispose()
         {
 
-            db.Dispose();
+            _db.Dispose();
 
         }
+
+
     }
 }

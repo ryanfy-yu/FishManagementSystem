@@ -1,4 +1,5 @@
-﻿using FishManagementSystem.IBussinessService;
+﻿using AutoMapper;
+using FishManagementSystem.IBussinessService;
 using FishManagementSystem.Server.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using SqlSugar;
@@ -8,14 +9,14 @@ namespace FishManagementSystem.Server.Utils
     public class FishControllerBase : ControllerBase
     {
 
-        public readonly IDataService _dataService;
-        public readonly ILogger<dynamic> _logger;
+        protected readonly ILogger<dynamic> _logger;
+        protected readonly IMapper _mapper;
 
 
-        public FishControllerBase(IDataService dataService, ILogger<dynamic> logger)
+        public FishControllerBase(ILogger<dynamic> logger, IMapper mapper)
         {
-            _dataService = dataService;
             _logger = logger;
+            _mapper = mapper;
 
         }
     }

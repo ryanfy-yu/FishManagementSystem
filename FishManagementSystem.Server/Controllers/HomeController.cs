@@ -1,5 +1,9 @@
-﻿using FishManagementSystem.DBModels.Models;
+﻿using AutoMapper;
+using FishManagementSystem.Commons;
+using FishManagementSystem.DBModels.Models;
+using FishManagementSystem.DTO;
 using FishManagementSystem.IBussinessService;
+using FishManagementSystem.Mapping;
 using FishManagementSystem.Server.Utils;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,9 +13,14 @@ namespace FishManagementSystem.Server.Controllers
     [Route("[controller]")]
     public class HomeController : FishControllerBase
     {
+        public readonly ISystemUsersDataService _dataService;
 
 
-        public HomeController(IDataService dataService, ILogger<HomeController> logger) : base(dataService, logger) { }
+        public HomeController(ISystemUsersDataService dataService, IMapper mapper, ILogger<HomeController> logger) : base(logger, mapper)
+        {
+            _dataService = dataService;
+
+        }
 
 
 
@@ -25,10 +34,20 @@ namespace FishManagementSystem.Server.Controllers
 
         // GET: HomeController
         [HttpGet(Name = "SystemUsers")]
-        public IEnumerable<TSystemUsers> SystemUsers()
+        public ApiResult SystemUsers()
         {
-            _logger.LogInformation("i am here");
-            return _dataService.Get<TSystemUsers>();
+            //_logger.LogInformation("i am here");
+            var data = _dataService.GetSystemUserInfo("string");
+
+            var dtoData = _mapper.Map<SystemUsersDTO>(data);
+
+            return new ApiResult()
+            {
+                Data = dtoData,
+                IsSuccess = true,
+
+            };
+
         }
 
 

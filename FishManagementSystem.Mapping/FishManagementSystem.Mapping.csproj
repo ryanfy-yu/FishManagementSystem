@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="IDataServiceGeneric.cs" />
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FishManagementSystem.IDBModels\FishManagementSystem.IDBModels.csproj" />
-    <ProjectReference Include="..\FishManagementSystem.Mapping\FishManagementSystem.Mapping.csproj" />
+    <ProjectReference Include="..\FishManagementSystem.DBModels\FishManagementSystem.DBModels.csproj" />
+    <ProjectReference Include="..\FishManagementSystem.DTO\FishManagementSystem.DTO.csproj" />
   </ItemGroup>
 
 </Project>

@@ -36,9 +36,11 @@
   <ItemGroup>
     <ProjectReference Include="..\FishManagementSystem.Autofac\FishManagementSystem.Autofac.csproj" />
     <ProjectReference Include="..\FishManagementSystem.BusinessService\FishManagementSystem.BusinessService.csproj" />
+    <ProjectReference Include="..\FishManagementSystem.Commons\FishManagementSystem.Commons.csproj" />
     <ProjectReference Include="..\FishManagementSystem.DBModels\FishManagementSystem.DBModels.csproj" />
     <ProjectReference Include="..\FishManagementSystem.IBussinessService\FishManagementSystem.IBussinessService.csproj" />
     <ProjectReference Include="..\FishManagementSystem.IoC\FishManagementSystem.IoC.csproj" />
+    <ProjectReference Include="..\FishManagementSystem.Mapping\FishManagementSystem.Mapping.csproj" />
   </ItemGroup>
 
 </Project>

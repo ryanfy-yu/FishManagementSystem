@@ -3,6 +3,7 @@ using Autofac.Extensions.DependencyInjection;
 using FishManagementSystem.BusinessService;
 using FishManagementSystem.IBussinessService;
 using FishManagementSystem.IoC;
+using FishManagementSystem.Mapping;
 using FishManagementSystem.Server.Utils;
 using Microsoft.Extensions.Hosting;
 using NLog.Extensions.Logging;
@@ -15,6 +16,13 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+#region ×¢²á AutoMapper
+
+builder.Services.AddAutoMapper(typeof(AutoMaperConfigProfile));
+
+#endregion
 
 
 #region Log config
@@ -37,17 +45,34 @@ else
 #region IoC/DI
 
 
+
+
 //builder.Host.AutofacRegister();
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
-builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
+builder.Host.ConfigureContainer<ContainerBuilder>(o =>
 {
-    builder.RegisterModule(new AutofacBusinessModule());
+    o.RegisterModule(new AutofacBusinessModule(builder.Configuration));
 });
 
 
 
 #endregion
 
+
+#region ¿çÓò
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("allcors", o =>
+    {
+        o.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+
+    });
+
+
+});
+
+#endregion
 
 
 var app = builder.Build();
@@ -69,5 +94,8 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.MapFallbackToFile("/index.html");
+
+app.UseCors("allcors");
+
 
 app.Run();
