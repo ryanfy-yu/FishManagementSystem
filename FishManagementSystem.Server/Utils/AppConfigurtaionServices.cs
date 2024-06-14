@@ -2,10 +2,12 @@
 
 namespace FishManagementSystem.Server.Utils
 {
-    public class AppConfigurtaionServices
+    public class AppsettingService
     {
-        public static IConfiguration Configuration { get; set; }
-        static AppConfigurtaionServices()
+        public static IConfiguration Configuration { get; private set; }
+
+        public static string DbConnectionString { get; set; }
+        static AppsettingService()
         {
             //ReloadOnChange = true 当appsettings.json被修改时重新加载            
             Configuration = new ConfigurationBuilder()
@@ -14,6 +16,10 @@ namespace FishManagementSystem.Server.Utils
             .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
             .Add(new JsonConfigurationSource { Path = "appsettings.json", ReloadOnChange = true })
             .Build();
+
+            DbConnectionString = Configuration.GetConnectionString("FishDB") ?? string.Empty;
+
+
         }
 
 

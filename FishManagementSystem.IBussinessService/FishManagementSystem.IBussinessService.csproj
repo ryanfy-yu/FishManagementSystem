@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SqlSugarCore" Version="5.1.4.158" />
+    <Compile Remove="IDataServiceGeneric.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FishManagementSystem.IDBModels\FishManagementSystem.IDBModels.csproj" />
   </ItemGroup>
 
 </Project>

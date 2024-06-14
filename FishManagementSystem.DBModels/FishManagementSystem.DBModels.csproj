@@ -1,14 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <OutputType>Exe</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Utils\AppConfigUtils.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="SqlSugarCore" Version="5.1.4.158" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FishManagementSystem.IDBModels\FishManagementSystem.IDBModels.csproj" />
   </ItemGroup>
 
 </Project>
