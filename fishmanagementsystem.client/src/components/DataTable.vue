@@ -30,7 +30,7 @@
 
   </div>
   <el-scrollbar style="height: 100%;">
-    <el-table :data="tableData" stripe border height="500">
+    <el-table :data="tableData" stripe border max-height="500px">
       <el-table-column type="selection" width="40" />
       <el-table-column prop="date" label="Date" width="" sortable />
       <el-table-column prop="name" label="Name" width="" />
@@ -38,7 +38,7 @@
       <el-table-column prop="city" label="City" width="" />
       <el-table-column prop="address" label="Address" width="" />
       <el-table-column prop="zip" label="Zip" width="" />
-      <el-table-column fixed="right" label="Operations" width="120">
+      <el-table-column fixed="right" label="Operations" width="150">
         <template #default>
           <el-button-group>
             <el-button link type="default" size="small" @click="handleClick">
@@ -53,7 +53,7 @@
     </el-table>
 
     <div style="margin: auto;
-  width: 50%;
+
   padding: 20px;">
       <el-pagination background layout="prev, pager, next" :total="1000" />
     </div>
@@ -82,7 +82,7 @@ const tableData = [
     name: '',
     state: 'California',
     city: 'Los Angeles',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los AngelesNo. 189, Grove St, Los AngelesNo. 189, Grove St, Los AngelesNo. 189, Grove St, Los AngelesNo. 189, Grove St, Los Angeles',
     zip: 'CA 90036',
   },
   {

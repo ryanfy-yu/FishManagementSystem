@@ -8,10 +8,10 @@
           <el-icon>
             <Setting />
           </el-icon>
-          <span>Navigator {{index}}</span>
+          <span>Navigator {{ index }}</span>
         </template>
         <el-menu-item-group>
-          <template #title><span>Group {{index}}</span></template>
+          <template #title><span>Group {{ index }}</span></template>
           <el-menu-item index="{{index}}-1">item one</el-menu-item>
           <el-menu-item index="{{index}}-2">item two</el-menu-item>
         </el-menu-item-group>
@@ -22,7 +22,7 @@
           <template #title><span>item four</span></template>
           <el-menu-item index="{{index}}-4-1">item one</el-menu-item>
         </el-sub-menu>
-      </el-sub-menu >
+      </el-sub-menu>
     </el-menu>
   </el-scrollbar>
 
@@ -50,6 +50,7 @@ const handleClose = (key: string, keyPath: string[]) => {
 
 <style scoped>
 .el-menu {
+  /* 去除多余border */
   border: none
 }
 </style>

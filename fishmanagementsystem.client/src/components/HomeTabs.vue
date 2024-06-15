@@ -13,14 +13,16 @@
     </el-tab-pane>
     <el-tab-pane label="Config">
       <el-scrollbar>
-        <p v-for="item in 30" :key="item" class="scrollbar-demo-item">{{ item }}</p>
+
+
+
       </el-scrollbar>
     </el-tab-pane>
     <el-tab-pane label="Role">
     </el-tab-pane>
     <el-tab-pane label="Task">
       <el-scrollbar>
-        <div class='pane-content'>
+        <div class="pane-content">
           <DataTable></DataTable>
         </div>
       </el-scrollbar>
@@ -32,17 +34,15 @@
 import DataTable from '@/components/DataTable.vue';
 </script>
 
+
 <style>
-.el-tabs {
-  height: 100%;
-  overflow: hidden;
-
-}
-
+.el-tabs,
 .el-tab-pane {
-  overflow: hidden;
   height: 100%;
+  overflow: hidden;
+
 }
+
 
 .demo-tabs>.el-tabs__content {
   height: calc(100% - 40px);
@@ -52,10 +52,7 @@ import DataTable from '@/components/DataTable.vue';
 
 .pane-content {
   padding: 15px;
-
 }
-
-
 
 .demo-tabs .custom-tabs-label .el-icon {
   vertical-align: middle;

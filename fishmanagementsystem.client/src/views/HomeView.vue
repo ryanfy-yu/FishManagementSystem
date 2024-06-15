@@ -35,13 +35,13 @@
       </el-header>
       <el-container>
         <el-aside>
-          <HomeMenu />
+          <HomeMenus />
         </el-aside>
         <el-container>
           <el-main style="height: 100%;
   overflow: hidden;
   ">
-            <HomeTab />
+            <HomeTabs />
           </el-main>
           <el-footer style="height: 30px;">
             <div class="div-foot">Ryan Fuyuan Yu</div>
@@ -53,14 +53,13 @@
 </template>
 
 <script lang="ts" setup>
-import HomeMenu from '@/components/HomeMenu.vue';
+import HomeMenus from '@/components/HomeMenus.vue';
 import HomeHeader from '@/components/HomeHeader.vue';
-
-import HomeTab from '@/components/HomeTab.vue';
+import HomeTabs from '@/components/HomeTabs.vue';
 </script>
 
 
-<style>
+<style scoped>
 .el-aside {
   border-right: 1px solid var(--el-border-color);
   width: 200px;

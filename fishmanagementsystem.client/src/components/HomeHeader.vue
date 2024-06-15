@@ -65,7 +65,7 @@ watch(isDarkMode, () => {
 
 </script>
 
-<style>
+<style scoped>
 .flex-grow {
   flex-grow: 1;
 }
