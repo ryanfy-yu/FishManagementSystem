@@ -25,7 +25,7 @@ builder.Services.AddAutoMapper(typeof(AutoMaperConfigProfile));
 #endregion
 
 
-#region Log config
+#region ÈÕÖ¾ÅäÖÃ
 
 string logName = builder.Configuration["LoggingConfigs:Name"];
 string LogConfigFile = builder.Configuration["LoggingConfigs:ConfigFile"];
@@ -42,7 +42,7 @@ else
 #endregion
 
 
-#region IoC/DI
+#region IoC/DI ÅäÖÃ
 
 
 
@@ -65,10 +65,9 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("allcors", o =>
     {
-        o.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+        o.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
 
     });
-
 
 });
 

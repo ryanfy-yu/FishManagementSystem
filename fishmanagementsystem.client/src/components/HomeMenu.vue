@@ -1,72 +1,30 @@
 <template>
   <el-scrollbar>
-    <el-menu default-active="2" class="el-menu-vertical-demo" :collapse="isCollapse" @open="handleOpen"
-      @close="handleClose">
-      <el-sub-menu index="1">
+    <el-menu default-active="2" class="el-menu-vertical" :collapse="isCollapse" @open="handleOpen" @close="handleClose">
+
+
+      <el-sub-menu :index="index" v-for="(item, index) in 5">
         <template #title>
           <el-icon>
-            <location />
+            <Setting />
           </el-icon>
-          <span>Navigator One</span>
+          <span>Navigator {{index}}</span>
         </template>
         <el-menu-item-group>
-          <template #title><span>Group One</span></template>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item two</el-menu-item>
+          <template #title><span>Group {{index}}</span></template>
+          <el-menu-item index="{{index}}-1">item one</el-menu-item>
+          <el-menu-item index="{{index}}-2">item two</el-menu-item>
         </el-menu-item-group>
         <el-menu-item-group title="Group Two">
-          <el-menu-item index="1-3">item three</el-menu-item>
+          <el-menu-item index="{{index}}-3">item three</el-menu-item>
         </el-menu-item-group>
-        <el-sub-menu index="1-4">
+        <el-sub-menu index="{{index}}-4">
           <template #title><span>item four</span></template>
-          <el-menu-item index="1-4-1">item one</el-menu-item>
+          <el-menu-item index="{{index}}-4-1">item one</el-menu-item>
         </el-sub-menu>
-      </el-sub-menu>
-      <el-sub-menu index="1">
-        <template #title>
-          <el-icon>
-            <location />
-          </el-icon>
-          <span>Navigator One</span>
-        </template>
-        <el-menu-item-group>
-          <template #title><span>Group One</span></template>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item two</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="Group Two">
-          <el-menu-item index="1-3">item three</el-menu-item>
-        </el-menu-item-group>
-        <el-sub-menu index="1-4">
-          <template #title><span>item four</span></template>
-          <el-menu-item index="1-4-1">item one</el-menu-item>
-        </el-sub-menu>
-      </el-sub-menu>
-      <el-menu-item index="2">
-        <el-icon><icon-menu /></el-icon>
-        <template #title>Navigator Two</template>
-      </el-menu-item>
-      <el-menu-item index="3">
-        <el-icon>
-          <document />
-        </el-icon>
-        <template #title>Navigator Three</template>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <el-icon>
-          <setting />
-        </el-icon>
-        <template #title>Navigator Four</template>
-      </el-menu-item>
-
-
-
-
+      </el-sub-menu >
     </el-menu>
   </el-scrollbar>
-
-
-
 
 
 
@@ -81,11 +39,6 @@ import {
   Setting,
 } from '@element-plus/icons-vue'
 
-const isCollapse = ref(false)
-
-const clickCollapse = () => {
-  isCollapse.value = !isCollapse.value
-}
 
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
@@ -95,10 +48,8 @@ const handleClose = (key: string, keyPath: string[]) => {
 }
 </script>
 
-<style>
-.el-menu-vertical-demo:not(.el-menu--collapse) {
-  /* width: 200px;
-  min-height: 500px; */
-  height: 90vh
+<style scoped>
+.el-menu {
+  border: none
 }
 </style>

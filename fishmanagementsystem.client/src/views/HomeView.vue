@@ -1,33 +1,97 @@
-<template>
+<!-- <template>
   <div class="common-layout">
     <el-container>
-      <el-header style="height: 10vh;background-color: blue;">
+      <el-header>
+        <HomeHeader />
       </el-header>
     </el-container>
     <el-container>
 
-      <HomeMenu />
+      <el-aside>
+        <HomeMenu />
+      </el-aside>
 
       <el-container>
-
-        <el-main style="height: 85vh;">
-
+        <el-main>
           <RouterView />
-
         </el-main>
-
         <el-footer>
-
-          <el-affix :position="bottom">
-            <p style="text-align: center;margin: 1vh;">Ryan</p>
+          <el-affix>
+            <div class="footer">
+              <p>Ryan Fuyuan YU</p>
+            </div>
           </el-affix>
         </el-footer>
       </el-container>
+    </el-container>
+  </div>
+</template> -->
 
+<template>
+  <div class="common-layout">
+    <el-container>
+      <el-header style="height: 60px;">
+        <HomeHeader />
+      </el-header>
+      <el-container>
+        <el-aside>
+          <HomeMenu />
+        </el-aside>
+        <el-container>
+          <el-main style="height: 100%;
+  overflow: hidden;
+  ">
+            <HomeTab />
+          </el-main>
+          <el-footer style="height: 30px;">
+            <div class="div-foot">Ryan Fuyuan Yu</div>
+          </el-footer>
+        </el-container>
+      </el-container>
     </el-container>
   </div>
 </template>
 
 <script lang="ts" setup>
 import HomeMenu from '@/components/HomeMenu.vue';
+import HomeHeader from '@/components/HomeHeader.vue';
+
+import HomeTab from '@/components/HomeTab.vue';
 </script>
+
+
+<style>
+.el-aside {
+  border-right: 1px solid var(--el-border-color);
+  width: 200px;
+}
+
+.el-footer {
+  border-top: 1px solid var(--el-border-color);
+  text-align: right;
+
+}
+
+.el-main {
+  padding: 0
+}
+
+.common-layout {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.el-container {
+  height: 100%;
+  overflow: hidden;
+}
+
+.div-foot {
+  right: 10px;
+  bottom: 5px;
+  position: absolute
+}
+</style>
