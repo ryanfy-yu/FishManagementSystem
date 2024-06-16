@@ -1,74 +1,60 @@
 <template>
-<div style="padding: 15px;">
+  <div style="padding: 15px;">
 
-  <el-collapse>
-    <el-collapse-item>
-      <template #title>
-        <el-icon class="header-icon">
-          <Search />
-        </el-icon>
-      </template>
-      <DataSearch></DataSearch>
-    </el-collapse-item>
-  </el-collapse>
-
-
-  <div class="table-button" style="padding: 15px;">
-    <el-button type="primary">
-      <el-icon>
-        <Plus />
-      </el-icon>
-      Add
-    </el-button>
-    <el-button type="danger">
-      <el-icon>
-        <Delete />
-      </el-icon>
-      Delete
-    </el-button>
-  </div>
-  <el-scrollbar style="height: 100%;">
-    <el-table :data="tableData" stripe border max-height="500px">
-      <el-table-column type="selection" width="40" />
-      <el-table-column prop="date" label="Date" width="" sortable />
-      <el-table-column prop="name" label="Name" width="" />
-      <el-table-column prop="state" label="State" width="" />
-      <el-table-column prop="city" label="City" width="" />
-      <el-table-column prop="address" label="Address" width="" />
-      <el-table-column prop="zip" label="Zip" width="" />
-      <el-table-column fixed="right" label="Operations" width="150">
-        <template #default>
-          <el-button-group>
-            <el-button link type="default" size="small" @click="handleClick">
-              Detail
-            </el-button>
-            <el-button link type="primary" size="small">Edit</el-button>
-            <el-button link type="danger" size="small">Delete</el-button>
-          </el-button-group>
-
+    <el-collapse>
+      <el-collapse-item>
+        <template #title>
+          <el-icon class="header-icon">
+            <Search />
+          </el-icon>
         </template>
-      </el-table-column>
-    </el-table>
+        <DataSearch></DataSearch>
+      </el-collapse-item>
+    </el-collapse>
 
-    <div style="margin: auto;
 
-  padding: 20px;">
-      <el-pagination v-model:current-page="currentPage4" v-model:page-size="pageSize4"
-        :page-sizes="[100, 200, 300, 400]" :small="small" :disabled="disabled" :background="background"
-        layout="total, sizes, prev, pager, next, jumper" :total="400" @size-change="handleSizeChange"
-        @current-change="handleCurrentChange" />
+    <div class="table-button" style="padding: 15px;">
+      <TableButtons />
     </div>
+    <el-scrollbar style="height: 100%;">
+      <el-table :data="tableData" stripe border max-height="500px">
+        <el-table-column type="selection" width="40" />
+        <el-table-column prop="date" label="Date" width="" sortable />
+        <el-table-column prop="name" label="Name" width="" />
+        <el-table-column prop="state" label="State" width="" />
+        <el-table-column prop="city" label="City" width="" />
+        <el-table-column prop="address" label="Address" width="" />
+        <el-table-column prop="zip" label="Zip" width="" />
+        <el-table-column fixed="right" label="Operations" width="150">
+          <template #default>
+            <el-button-group>
+              <el-button link type="default" size="small" @click="handleClick">
+                Detail
+              </el-button>
+              <el-button link type="primary" size="small">Edit</el-button>
+              <el-button link type="danger" size="small">Delete</el-button>
+            </el-button-group>
+
+          </template>
+        </el-table-column>
+      </el-table>
+
+      <div style="margin: auto;  padding: 20px;">
+        <TablePagination />
+      </div>
 
 
-  </el-scrollbar>
-</div>
+    </el-scrollbar>
+  </div>
 </template>
 
 <style scoped></style>
 
 <script lang="ts" setup>
-import {ref} from 'vue';
+import { ref } from 'vue';
 import DataSearch from '@/components/DataTable/DataSearch.vue';
+import TableButtons from '@/components/DataTable/TableButtons.vue'
+import TablePagination from '@/components/DataTable/TablePagination.vue'
 import {
   ArrowLeft,
   ArrowRight,

@@ -1,32 +1,3 @@
-<!-- <template>
-  <div class="common-layout">
-    <el-container>
-      <el-header>
-        <HomeHeader />
-      </el-header>
-    </el-container>
-    <el-container>
-
-      <el-aside>
-        <HomeMenu />
-      </el-aside>
-
-      <el-container>
-        <el-main>
-          <RouterView />
-        </el-main>
-        <el-footer>
-          <el-affix>
-            <div class="footer">
-              <p>Ryan Fuyuan YU</p>
-            </div>
-          </el-affix>
-        </el-footer>
-      </el-container>
-    </el-container>
-  </div>
-</template> -->
-
 <template>
   <div class="common-layout">
     <el-container>
@@ -53,9 +24,9 @@
 </template>
 
 <script lang="ts" setup>
-import HomeMenus from '@/components/Home/HomeMenus.vue';
-import HomeHeader from '@/components/Home/HomeHeader.vue';
-import HomeTabs from '@/components/Home/HomeTabs.vue';
+import HomeMenus from '@/components/Index/Menus.vue';
+import HomeHeader from '@/components/Index/Header.vue';
+import HomeTabs from '@/components/Index/Tabs.vue';
 </script>
 
 

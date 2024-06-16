@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts" setup>
-import DataTable from '@/components/DataTable.vue';
+import DataTable from '@/components/DataTable/DataTable.vue';
 import { ref } from 'vue'
 
 const isfullScreenMode = ref(false);
