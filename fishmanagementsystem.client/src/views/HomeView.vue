@@ -71,10 +71,6 @@ import HomeTabs from '@/components/HomeTabs.vue';
 
 }
 
-.el-main {
-  padding: 0
-}
-
 .common-layout {
   position: absolute;
   top: 0;

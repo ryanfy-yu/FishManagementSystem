@@ -1,38 +1,38 @@
 <template>
     <!-- 整体背景 -->
-    <div class="login-wrap">
-        <!--输入框-->
-        <div class="form-wrapper">
-            <div class="header">
-                Login
-            </div>
-            <div class="input-" style="padding: 20px;">
+    <div class="common-layout">
+        <el-container>
+            <el-main>
+                <el-row class="row-bg" justify="center" align="middle" style="height: 100%;">
+                    <el-col :span="6">
+                        <div class="grid-content title">
+                            Login
+                        </div>
+                        <div class="grid-content">
+                            <el-input v-model="username" style="width: 100%" placeholder="Please input UserName" />
+                        </div>
+                        <div class="grid-content">
+                            <el-input v-model="password" type="password" style="width: 100"
+                                placeholder="Please input Password" />
+                        </div>
+                        <div class="grid-content">
 
-                <!-- <input type="text" name="username" placeholder="username" class="border-item" autocomplete="off" /> -->
-                <el-input v-model="username" style="width: 100%" placeholder="Please input UserName" />
-                <div style="margin: 20px 0" />
-                <!-- <input type="password" name="password" placeholder="password" class="border-item"
-                        autocomplete="off" /> -->
+                            <el-button size="large" style="margin: auto" round :disabled="validateForm"
+                                @click="submit_login">Login</el-button>
+                        </div>
 
-                <el-input v-model="password" type="password" style="width: 100" placeholder="Please input Password" />
 
-            </div>
-            <div style="margin: 20px 0" />
-            <div class="action">
-                <!-- <div class="btn">login</div> -->
-                <el-button size="large" round :disabled="validateForm" @click="submit_login">Login</el-button>
-            </div>
-        </div>
+                    </el-col>
+                </el-row>
+
+            </el-main>
+        </el-container>
     </div>
+
 </template>
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue'
-
-// const userinfo = ref({
-//     username:"",
-//     password:""
-// })
 
 const username = ref("")
 const password = ref("")
@@ -51,101 +51,35 @@ const validateForm = computed(() => {
 </script>
 
 <style scoped>
-.login-wrap {
-    height: 100vh;
-    font-family: JetBrains Mono Medium;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* background-color: #0e92b3; */
+.common-layout {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     background: url('../assets/background.jpg');
-    background-size: 100% 100%;
 }
 
-.form-wrapper {
-    width: 300px;
-    background-color: rgba(41, 45, 62, 0.8);
-    color: #fff;
-    border-radius: 2px;
-    padding: 50px;
+.el-container {
+    height: 100%;
+    overflow: hidden;
 }
 
-.form-wrapper .header {
-    text-align: center;
-    font-size: 40px;
-    /* text-transform: uppercase; */
-    line-height: 100px;
-}
-
-.form-wrapper .input-wrapper input {
-    background-color: rgb(41, 45, 62);
-    border: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 15px;
-    color: #fff;
-    outline: none;
-}
-
-.form-wrapper .input-wrapper input::placeholder {
-    text-transform: uppercase;
-}
-
-.form-wrapper .input-wrapper .border-wrapper {
-    background-image: linear-gradient(to right, #e8198b, #0eb4dd);
-    width: 100%;
-    height: 50px;
-    margin-bottom: 20px;
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.form-wrapper .input-wrapper .border-wrapper .border-item {
-    height: calc(100% - 4px);
-    width: calc(100% - 4px);
-    border-radius: 30px;
-}
-
-.form-wrapper .action {
-    display: flex;
-    justify-content: center;
-}
-
-.form-wrapper .action .btn {
-    width: 60%;
-    text-transform: uppercase;
-    border: 2px solid #0e92b3;
-    text-align: center;
-    line-height: 50px;
-    border-radius: 30px;
-    cursor: pointer;
-}
-
-.form-wrapper .action .btn:hover {
-    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-}
-
-.form-wrapper .icon-wrapper {
-    text-align: center;
-    width: 60%;
-    margin: 0 auto;
-    margin-top: 20px;
-    border-top: 1px dashed rgb(146, 146, 146);
+.el-col {
+    border-radius: 10px;
+    background-color: #1D1D1D;
     padding: 20px;
+    opacity: 0.8;
 }
 
-.form-wrapper .icon-wrapper i {
-    font-size: 20px;
-    color: rgb(187, 187, 187);
-    cursor: pointer;
-    border: 1px solid #fff;
-    padding: 5px;
-    border-radius: 20px;
+.grid-content {
+    padding: 15px;
+    text-align: center;
+
 }
 
-.form-wrapper .icon-wrapper i:hover {
-    background-color: #0e92b3;
+.title {
+    color: #E5EAF3;
+    font-size: 48px;
 }
 </style>
