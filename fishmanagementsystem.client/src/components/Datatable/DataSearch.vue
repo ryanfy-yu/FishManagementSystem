@@ -60,11 +60,10 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue'
-import { InfoFilled } from '@element-plus/icons-vue'
+import { ref } from 'vue'
 
 // do not use same name with ref
-const form = reactive({
+const form = ref({
   name: '',
   region: '',
   date1: '',

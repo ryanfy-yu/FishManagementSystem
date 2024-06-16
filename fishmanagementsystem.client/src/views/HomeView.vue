@@ -53,9 +53,9 @@
 </template>
 
 <script lang="ts" setup>
-import HomeMenus from '@/components/HomeMenus.vue';
-import HomeHeader from '@/components/HomeHeader.vue';
-import HomeTabs from '@/components/HomeTabs.vue';
+import HomeMenus from '@/components/Home/HomeMenus.vue';
+import HomeHeader from '@/components/Home/HomeHeader.vue';
+import HomeTabs from '@/components/Home/HomeTabs.vue';
 </script>
 
 
@@ -67,7 +67,7 @@ import HomeTabs from '@/components/HomeTabs.vue';
 
 .el-footer {
   border-top: 1px solid var(--el-border-color);
-  text-align: right;
+
 
 }
 
@@ -85,8 +85,7 @@ import HomeTabs from '@/components/HomeTabs.vue';
 }
 
 .div-foot {
-  right: 10px;
-  bottom: 5px;
-  position: absolute
+  padding-top: 5px;
+  text-align: center;
 }
 </style>

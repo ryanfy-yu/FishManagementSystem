@@ -1,19 +1,19 @@
 <template>
-
+<div style="padding: 15px;">
 
   <el-collapse>
-    <el-collapse-item name="1">
+    <el-collapse-item>
       <template #title>
         <el-icon class="header-icon">
           <Search />
         </el-icon>
       </template>
-      <HomeSearch></HomeSearch>
+      <DataSearch></DataSearch>
     </el-collapse-item>
   </el-collapse>
 
 
-  <div style="padding: 15px;">
+  <div class="table-button" style="padding: 15px;">
     <el-button type="primary">
       <el-icon>
         <Plus />
@@ -26,8 +26,6 @@
       </el-icon>
       Delete
     </el-button>
-
-
   </div>
   <el-scrollbar style="height: 100%;">
     <el-table :data="tableData" stripe border max-height="500px">
@@ -63,14 +61,14 @@
 
 
   </el-scrollbar>
-
+</div>
 </template>
 
 <style scoped></style>
 
 <script lang="ts" setup>
 import {ref} from 'vue';
-import HomeSearch from '@/components/HomeSearch.vue';
+import DataSearch from '@/components/DataTable/DataSearch.vue';
 import {
   ArrowLeft,
   ArrowRight,
