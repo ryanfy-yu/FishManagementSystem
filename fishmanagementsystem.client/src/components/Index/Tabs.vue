@@ -52,12 +52,10 @@ type TabType = {
   name: string;
   content: string;
 }
-let tabArray: TabType[] = [];
-
 
 //Tabs Data
 const tabActiveName = ref("home")
-const editableTabs = ref(tabArray)
+const editableTabs = ref<Array<TabType>>([])
 
 //删除标签页
 const removeTab = (targetName: string) => {
@@ -69,6 +67,9 @@ const removeTab = (targetName: string) => {
         const nextTab = tabs[index + 1] || tabs[index - 1]
         if (nextTab) {
           activeName = nextTab.name
+        } else {
+
+          activeName = "home"
         }
       }
     })
@@ -114,7 +115,8 @@ const addTab = () => {
   overflow: hidden;
   padding: 0;
 }
-.el-tabs__item{
+
+.el-tabs__item {
   user-select: none;
 
 }
