@@ -1,7 +1,8 @@
 <template>
   <div :class="{ fullScreenMode: isfullScreenMode }" style="height: 100%;">
     <div style='position: relative;height: 100%;'>
-      <el-tabs @tab-remove="removeTab" type="border-card" class="demo-tabs" v-model="tabActiveName">
+      <el-tabs @tab-remove="homeTabsStore.removeTab" type="border-card" class="demo-tabs"
+        v-model="homeTabsStore.tabActiveName">
         <el-tab-pane key="home" label="Home" name="home">
           <template #label>
             <span class="custom-tabs-label">
@@ -15,10 +16,10 @@
             <DataTable></DataTable>
           </el-scrollbar>
         </el-tab-pane>
-        <el-tab-pane closable v-for="item in editableTabs" :key="item.name" :label="item.title" :name="item.name">
+        <el-tab-pane closable v-for="item in homeTabsStore.tabsData" :key="item.name" :label="item.title"
+          :name="item.name">
           <el-scrollbar>
             {{ item.content }}
-
           </el-scrollbar>
         </el-tab-pane>
       </el-tabs>
@@ -39,6 +40,7 @@
 <script lang="ts" setup>
 import DataTable from '@/components/DataTable/DataTable.vue';
 import { ref } from 'vue'
+import { useHomeTabsStore } from "@/stores/homeTabs"
 
 const isfullScreenMode = ref(false);
 
@@ -47,48 +49,48 @@ const useFullScreen = () => {
 }
 
 //定义tab内容结构
-type TabType = {
-  title: string;
-  name: string;
-  content: string;
-}
+// type TabType = {
+//   title: string;
+//   name: string;
+//   content: string;
+// }
 
 //Tabs Data
-const tabActiveName = ref("home")
-const editableTabs = ref<Array<TabType>>([])
+//const tabActiveName = ref("home")
+let homeTabsStore = useHomeTabsStore()
+
 
 //删除标签页
-const removeTab = (targetName: string) => {
-  const tabs = editableTabs.value
-  let activeName = tabActiveName.value
-  if (activeName === targetName) {
-    tabs.forEach((tab, index) => {
-      if (tab.name === targetName) {
-        const nextTab = tabs[index + 1] || tabs[index - 1]
-        if (nextTab) {
-          activeName = nextTab.name
-        } else {
+// const removeTab = (targetName: string) => {
+//   const tabs = editableTabs
+//   let activeName = tabActiveName.value
+//   if (activeName === targetName) {
+//     tabs.forEach((tab, index) => {
+//       if (tab.name === targetName) {
+//         const nextTab = tabs[index + 1] || tabs[index - 1]
+//         if (nextTab) {
+//           activeName = nextTab.name
+//         } else {
 
-          activeName = "home"
-        }
-      }
-    })
-  }
+//           activeName = "home"
+//         }
+//       }
+//     })
+//   }
 
-  tabActiveName.value = activeName
-  editableTabs.value = tabs.filter((tab) => tab.name !== targetName)
-}
+//   tabActiveName.value = activeName
+//   editableTabs = tabs.filter((tab) => tab.name !== targetName)
+// }
 let tabindex = 1
 const addTab = () => {
   const newTabName = tabindex++;
-  editableTabs.value.push({
+  homeTabsStore.tabsData.push({
     title: 'New Tab' + tabindex,
     name: newTabName.toString(),
     content: 'New Tab content' + tabindex,
   });
-  tabActiveName.value = newTabName.toString()
+  homeTabsStore.tabActiveName = newTabName.toString()
 }
-
 </script>
 
 
