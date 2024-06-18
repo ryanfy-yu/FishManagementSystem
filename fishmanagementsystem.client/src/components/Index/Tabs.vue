@@ -1,32 +1,28 @@
 <template>
   <div :class="{ fullScreenMode: isfullScreenMode }" style="height: 100%;">
     <div style='position: relative;height: 100%;'>
-      <el-tabs @tab-remove="homeTabsStore.removeTab" type="border-card" class="demo-tabs"
-        v-model="homeTabsStore.tabActiveName">
-        <el-tab-pane key="home" label="Home" name="home">
-          <template #label>
-            <span class="custom-tabs-label">
-              <el-icon>
-                <HomeFilled />
-              </el-icon>
-              <span>Home</span>
-            </span>
-          </template>
-          <el-scrollbar>
-            <DataTable></DataTable>
-          </el-scrollbar>
-        </el-tab-pane>
-        <el-tab-pane closable v-for="item in homeTabsStore.tabsData" :key="item.name" :label="item.title"
-          :name="item.name">
-          <el-scrollbar>
-            {{ item.content }}
-          </el-scrollbar>
-        </el-tab-pane>
+      <el-tabs @tab-remove="homeTabsStore.removeTab" @tab-change="tabChange" type="border-card" class="demo-tabs"
+        v-model="homeTabsStore.activeTab">
+
+        <template v-for="item in homeTabsStore.tabsData">
+          <el-tab-pane :closable="item.isCloseable" :label="item.title" :name="item.name">
+            <template #label v-if="item.icon != ''">
+              <span class="custom-tabs-label">
+                <el-icon>
+                  <component :is="item.icon" />
+                </el-icon>
+                <span>{{ item.title }}</span>
+              </span>
+            </template>
+            <el-scrollbar>
+              <component :is="LoginView" />
+              <!-- {{ item.content }} -->
+            </el-scrollbar>
+          </el-tab-pane>
+        </template>
+
       </el-tabs>
       <div style='position: absolute;right:10px;top:5px;'>
-        <el-button @click="addTab">
-          Add
-        </el-button>
         <el-button @click="useFullScreen">
           <el-icon>
             <FullScreen />
@@ -41,56 +37,24 @@
 import DataTable from '@/components/DataTable/DataTable.vue';
 import { ref } from 'vue'
 import { useHomeTabsStore } from "@/stores/homeTabs"
+import { useHomeMenusStore } from "@/stores/homeMenus"
+import LoginView from '@/views/LoginView.vue'
+
+
+let homeTabsStore = useHomeTabsStore()
+let homeMenusStore = useHomeMenusStore()
 
 const isfullScreenMode = ref(false);
-
 const useFullScreen = () => {
   isfullScreenMode.value = !isfullScreenMode.value
 }
 
-//定义tab内容结构
-// type TabType = {
-//   title: string;
-//   name: string;
-//   content: string;
-// }
+const tabChange = (name: any) => {
 
-//Tabs Data
-//const tabActiveName = ref("home")
-let homeTabsStore = useHomeTabsStore()
-
-
-//删除标签页
-// const removeTab = (targetName: string) => {
-//   const tabs = editableTabs
-//   let activeName = tabActiveName.value
-//   if (activeName === targetName) {
-//     tabs.forEach((tab, index) => {
-//       if (tab.name === targetName) {
-//         const nextTab = tabs[index + 1] || tabs[index - 1]
-//         if (nextTab) {
-//           activeName = nextTab.name
-//         } else {
-
-//           activeName = "home"
-//         }
-//       }
-//     })
-//   }
-
-//   tabActiveName.value = activeName
-//   editableTabs = tabs.filter((tab) => tab.name !== targetName)
-// }
-let tabindex = 1
-const addTab = () => {
-  const newTabName = tabindex++;
-  homeTabsStore.tabsData.push({
-    title: 'New Tab' + tabindex,
-    name: newTabName.toString(),
-    content: 'New Tab content' + tabindex,
-  });
-  homeTabsStore.tabActiveName = newTabName.toString()
+  //homeMenusStore.defaultActive = name
 }
+
+
 </script>
 
 

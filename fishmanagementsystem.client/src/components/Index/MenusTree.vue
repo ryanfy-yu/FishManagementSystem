@@ -1,17 +1,17 @@
 <template>
 
-    <div v-for="item in menusProps.menusTree" :key="item.Id">
-        <el-sub-menu v-if="item.children != undefined && item.children.length > 0" :index="item.Id">
+    <div v-for="item in menusProps.menuTree" :key="item.index">
+        <el-sub-menu v-if="item.children != undefined && item.children.length > 0" :index="item.index">
             <template #title>
                 <el-icon>
                     <component :is="item.icon" />
                 </el-icon>
                 {{ item.title }}
             </template>
-            <MenusTree :menusTree="item.children" />
+            <MenusTree :menuTree="item.children" />
         </el-sub-menu>
 
-        <el-menu-item v-else :index="item.Id">
+        <el-menu-item v-else :index="item.index" @click="clickItem(item)">
             <template #title>
                 <el-icon>
                     <component :is="item.icon" />
@@ -26,9 +26,12 @@
 <script setup lang="ts">
 
 import MenusTree from "@/components/Index/MenusTree.vue"
+import { useHomeMenusStore } from "@/stores/homeMenus"
+
+const homeMenusStore = useHomeMenusStore()
 
 type Menutype = {
-    Id: string;
+    index: string;
     title: string;
     path?: string;
     icon?: string;
@@ -36,14 +39,20 @@ type Menutype = {
 }
 
 const menusProps = defineProps({
-    menusTree: Array<Menutype>
+    menuTree: Array<Menutype>
 })
+
+
+
+const clickItem = function (item: any) {
+
+    homeMenusStore.clickMenuItem(item)
+}
 
 </script>
 
 <style scoped>
 .el-menu-item.is-active {
-
     background: var(--el-menu-hover-bg-color)
 }
 </style>

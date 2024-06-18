@@ -1,6 +1,6 @@
 <template>
-  <el-menu default-active="home" vue-router="true" class="el-menu-vertical">
-    <MenusTree :menusTree="menuData.menusData" />
+  <el-menu  vue-router="true" class="el-menu-vertical" :default-active="homeMenusStore.defaultActive">
+    <MenusTree :menuTree="homeMenusStore.menuList" />
   </el-menu>
 
 </template>
@@ -14,13 +14,11 @@ import {
 } from '@element-plus/icons-vue'
 import { useHomeMenusStore } from '@/stores/homeMenus'
 
-
-
 const menuClick = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
 
-const menuData = useHomeMenusStore()
+const homeMenusStore = useHomeMenusStore()
 
 
 </script>
