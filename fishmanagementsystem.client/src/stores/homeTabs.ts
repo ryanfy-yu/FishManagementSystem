@@ -42,8 +42,7 @@ export const useHomeTabsStore = defineStore('homeTabs', () => {
         const tabs = tabsData.value
         const tab = tabs.find((tab) => tab.path == tabItem.path)
         if (tab == undefined) {
-
-
+            
             const netTabname = activeTab.value + 1
             tabsData.value.push({
                 title: tabItem.title,
