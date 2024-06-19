@@ -5,6 +5,7 @@ using FishManagementSystem.IBussinessService;
 using FishManagementSystem.IoC;
 using FishManagementSystem.Mapping;
 using FishManagementSystem.Server.Utils;
+using FishManagementSystem.Swagger;
 using Microsoft.Extensions.Hosting;
 using NLog.Extensions.Logging;
 
@@ -12,10 +13,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+//builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+//builder.Services.AddEndpointsApiExplorer();
+//builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerSetup();
+
+builder.Services.AddControllers().AddNewtonsoftJson(option =>
+{
+    //时间统一格式
+    option.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm";
+});
 
 
 #region 注册 AutoMapper
@@ -74,6 +82,12 @@ builder.Services.AddCors(options =>
 #endregion
 
 
+#region JWT
+
+
+#endregion
+
+
 var app = builder.Build();
 
 app.UseDefaultFiles();
@@ -82,12 +96,15 @@ app.UseStaticFiles();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    //app.UseSwagger();
+    //app.UseSwaggerUI();
+    app.useSwaggerExt();
 }
 
 app.UseHttpsRedirection();
 
+
+//app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

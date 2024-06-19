@@ -13,19 +13,21 @@ const router = createRouter({
       path: '/',
       name: 'index',
       component: IndexView,
+      meta: { isAuth: true, title: 'Index' },
       children: [
         {
-          name: 'home',
-          path: '/home',
-          component: HomeView
-        },
-        {
-          name: 'datatable2',
-          path: '/datatable2',
-          component: DataTable
+          name: 'tabs',
+          path: '/',
+          components: {
+            "login": () => LoginView,
+            "home": () => import('../views/HomeView.vue'),
+            "dataList": () => import('../views/HomeView.vue'),
+          },
         }
       ]
     },
+    { path: '/error', component: () => import('../views/Error.vue') },
+    { path: '/:catchAll(.*)', redirect: '/error' },
     {
       path: '/login',
       name: 'login',
@@ -34,6 +36,10 @@ const router = createRouter({
     {
       path: '/tabpages',
       name: 'tabpages',
+      components: {
+        "/login": () => LoginView,
+        "login": () => LoginView,
+      },
       children: [
         {
           name: 'home',

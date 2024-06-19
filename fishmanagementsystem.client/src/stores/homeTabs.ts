@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
 // 你可以任意命名 `defineStore()` 的返回值，但最好使用 store 的名字，同时以 `use` 开头且以 `Store` 结尾。
 // (比如 `useUserStore`，`useCartStore`，`useProductStore`)
@@ -8,6 +9,7 @@ export const useHomeTabsStore = defineStore('homeTabs', () => {
 
     //定义tab内容结构
     type TabType = {
+        menuIndex: string,
         title: string,
         name: number,
         icon: string,
@@ -16,6 +18,10 @@ export const useHomeTabsStore = defineStore('homeTabs', () => {
         isCloseable?: boolean
     }
     const activeTab = ref(0)
+    let tabIndex = 0;//获取最大tabindex数
+
+
+
 
     const tabsData = ref<TabType[]>([])
 
@@ -37,29 +43,28 @@ export const useHomeTabsStore = defineStore('homeTabs', () => {
         tabsData.value = tabs.filter((tab) => tab.name !== new Number(targetName).valueOf())
 
     }
-    const addTab = (tabItem: any) => {
+    const addTab = (menuEntity: any) => {
 
         const tabs = tabsData.value
-        const tab = tabs.find((tab) => tab.path == tabItem.path)
+        const tab = tabs.find((tab) => tab.path == menuEntity.path)
         if (tab == undefined) {
-            
-            const netTabname = activeTab.value + 1
-            tabsData.value.push({
-                title: tabItem.title,
-                name: netTabname,
-                content: tabItem.content,
-                icon: tabItem.icon,
-                path: tabItem.path,
-                isCloseable: tabItem.isCloseable
-            });
 
+            const netTabname = tabIndex++
             activeTab.value = netTabname//new Number(tabItem.name).valueOf()
+            tabsData.value.push({
+                menuIndex: menuEntity.index,
+                title: menuEntity.title,
+                name: netTabname,
+                content: menuEntity.content,
+                icon: menuEntity.icon,
+                path: menuEntity.path,
+                isCloseable: menuEntity.isCloseable
+            });
+            //useRouter().push("/")
+
         } else {
             activeTab.value = tab.name
         }
-
-        //alert(tabItem.name)
-
     }
 
     return { tabsData, activeTab, removeTab, addTab }

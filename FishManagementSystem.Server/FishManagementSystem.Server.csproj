@@ -7,6 +7,7 @@
     <SpaRoot>..\fishmanagementsystem.client</SpaRoot>
     <SpaProxyLaunchCommand>npm run dev</SpaProxyLaunchCommand>
     <SpaProxyServerUrl>https://localhost:5173</SpaProxyServerUrl>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,6 +25,7 @@
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Autofac.Extras.DynamicProxy" Version="7.1.0" />
     <PackageReference Include="log4net" Version="2.0.17" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy">
       <Version>8.*-*</Version>
     </PackageReference>
@@ -34,13 +36,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FishManagementSystem.Autofac\FishManagementSystem.Autofac.csproj" />
     <ProjectReference Include="..\FishManagementSystem.BusinessService\FishManagementSystem.BusinessService.csproj" />
     <ProjectReference Include="..\FishManagementSystem.Commons\FishManagementSystem.Commons.csproj" />
     <ProjectReference Include="..\FishManagementSystem.DBModels\FishManagementSystem.DBModels.csproj" />
     <ProjectReference Include="..\FishManagementSystem.IBussinessService\FishManagementSystem.IBussinessService.csproj" />
     <ProjectReference Include="..\FishManagementSystem.IoC\FishManagementSystem.IoC.csproj" />
     <ProjectReference Include="..\FishManagementSystem.Mapping\FishManagementSystem.Mapping.csproj" />
+    <ProjectReference Include="..\FishManagementSystem.Swagger\FishManagementSystem.Swagger.csproj" />
   </ItemGroup>
 
 </Project>

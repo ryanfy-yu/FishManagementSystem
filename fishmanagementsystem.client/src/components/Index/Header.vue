@@ -7,10 +7,9 @@
     <el-menu-item>
       <img style="width: 100px" src="https://element-plus.org/images/element-plus-logo.svg" alt="Element logo" />
     </el-menu-item>
-    <div class="flex-grow" />
+    <div class="flex-grow">
 
-
-
+    </div>
     <el-menu-item>
       <el-switch v-model="isDark" />
     </el-menu-item>
@@ -40,7 +39,8 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
 import { useToggle } from '@vueuse/shared'
-import { useDark } from "@vueuse/core";
+import { useDark } from "@vueuse/core"
+
 
 const activeIndex = ref('1')
 const handleSelect = (key: string, keyPath: string[]) => {

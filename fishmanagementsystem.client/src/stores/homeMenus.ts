@@ -12,8 +12,8 @@ export const useHomeMenusStore = defineStore('homeMenus', () => {
         {
             index: "0",
             title: '首页',
-            icon: 'location',
-            path: '/DataTable/index',
+            icon: 'HomeFilled',
+            path: '/',
         },
         {
             index: "1",
@@ -24,15 +24,15 @@ export const useHomeMenusStore = defineStore('homeMenus', () => {
                 {
                     index: '2',
                     title: '物件管理',
-                    icon: 'search',
-                    path: '/case_manage',
+                    icon: 'Document',
+                    path: '/case_mafnage',
  
                 },
                 {
                     index: '3',
                     title: '物件研判',
-                    icon: 'search',
-                    path: '/person_involved',
+                    icon: 'Document',
+                    path: '/person_involfved',
     
                 }
             ]
@@ -41,26 +41,25 @@ export const useHomeMenusStore = defineStore('homeMenus', () => {
             index: "4",
             title: '事物管理',
             icon: 'search',
-            path: '',
             children: [
                 {
                     index: '5',
                     title: '物件管理',
-                    icon: 'search',
-                    path: '/case_manage',
+                    icon: 'Document',
+                    path: '/caaaaase_manage',
                 },
                 {
                     index: '6',
                     title: '物件研判',
-                    icon: 'search',
-                    path: '/person_involved',
+                    icon: 'Document',
+                    path: '/person_aaainvolved',
                 }
             ]
         },
         {
             index: "7",
             title: '一键搜',
-            icon: 'search',
+            icon: 'Document',
             path: '/search',
         }])
 
@@ -74,7 +73,7 @@ export const useHomeMenusStore = defineStore('homeMenus', () => {
         let menu = menuList.value[0].children == undefined ? menuList.value[0] : menuList.value[0].children[0]
 
         homeTabsStore.addTab({
-            name: menu.index,
+            index: menu.index,
             title: menu.title,
             icon: menu.icon,
             path: menu.path,
@@ -91,12 +90,14 @@ export const useHomeMenusStore = defineStore('homeMenus', () => {
         defaultActive.value = menuItem.index
 
         homeTabsStore.addTab({
-            name: menuItem.index,
+            index: menuItem.index,
             title: menuItem.title,
             icon: menuItem.icon,
             path: menuItem.path,
             isCloseable: true
         })
+
+
     }
 
 

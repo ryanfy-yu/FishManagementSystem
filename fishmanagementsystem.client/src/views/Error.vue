@@ -5,21 +5,8 @@
             <el-main>
                 <el-row class="row-bg" justify="center" align="middle" style="height: 100%;">
                     <el-col :span="6">
-                        <div class="grid-content title">
-                            Login
-                        </div>
-                        <div class="grid-content">
-                            <el-input v-model="usernameOfEmail" style="width: 100%" placeholder="请输入用户名或者邮箱" />
-                        </div>
-                        <div class="grid-content">
-                            <el-input v-model="password" type="password" style="width: 100"
-                                placeholder="请输入密码" />
-                        </div>
-                        <div class="grid-content">
-
-                            <el-button size="large" style="margin: auto" round :disabled="validateForm"
-                                @click="submit_login">Login</el-button>
-                        </div>
+                        <H1>Sorry! 出错了！</H1>
+                        <H2>找不到页面或者其他原因，请重试</H2>
                     </el-col>
                 </el-row>
 
@@ -67,16 +54,6 @@ const validateForm = computed(() => {
     background-color: #1D1D1D;
     padding: 20px;
     opacity: 0.8;
-}
-
-.grid-content {
-    padding: 15px;
-    text-align: center;
-
-}
-
-.title {
-    color: #E5EAF3;
-    font-size: 48px;
+    color: aliceblue;
 }
 </style>

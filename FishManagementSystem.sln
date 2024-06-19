@@ -25,17 +25,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{709A07A3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishManagementSystem.AOP", "FishManagementSystem.AOP\FishManagementSystem.AOP.csproj", "{E353430D-C1A3-43F8-B2EF-845BA2B62F1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishManagementSystem.IoC", "FishManagementSystem.IoC\FishManagementSystem.IoC.csproj", "{F67C3C54-1CDD-40DD-A954-7E11251AD44B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishManagementSystem.IoC", "FishManagementSystem.IoC\FishManagementSystem.IoC.csproj", "{F67C3C54-1CDD-40DD-A954-7E11251AD44B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{8AB280F6-D3C0-4CC4-AE5E-C125769A9E37}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extend", "Extend", "{0DA0CBB5-74D8-40A2-9F6F-DA1966E1EF85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishManagementSystem.Commons", "FishManagementSystem.Commons\FishManagementSystem.Commons.csproj", "{2C405711-E179-4C9B-B10B-A125E9DE45D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishManagementSystem.Commons", "FishManagementSystem.Commons\FishManagementSystem.Commons.csproj", "{2C405711-E179-4C9B-B10B-A125E9DE45D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishManagementSystem.Mapping", "FishManagementSystem.Mapping\FishManagementSystem.Mapping.csproj", "{5C5C0C2C-051F-430C-823F-802613845ABD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishManagementSystem.Mapping", "FishManagementSystem.Mapping\FishManagementSystem.Mapping.csproj", "{5C5C0C2C-051F-430C-823F-802613845ABD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishManagementSystem.DTO", "FishManagementSystem.DTO\FishManagementSystem.DTO.csproj", "{9B582C5A-BB0B-4DB8-841D-FDC7FFCFF646}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishManagementSystem.DTO", "FishManagementSystem.DTO\FishManagementSystem.DTO.csproj", "{9B582C5A-BB0B-4DB8-841D-FDC7FFCFF646}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishManagementSystem.JWT", "FishManagementSystem.JWT\FishManagementSystem.JWT.csproj", "{E02D3F07-5D5F-46C0-A1E7-1738C5787A70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishManagementSystem.Swagger", "FishManagementSystem.Swagger\FishManagementSystem.Swagger.csproj", "{23C81296-3D21-4805-82F3-BEB8DC9C0804}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +97,14 @@ Global
 		{9B582C5A-BB0B-4DB8-841D-FDC7FFCFF646}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B582C5A-BB0B-4DB8-841D-FDC7FFCFF646}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B582C5A-BB0B-4DB8-841D-FDC7FFCFF646}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E02D3F07-5D5F-46C0-A1E7-1738C5787A70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E02D3F07-5D5F-46C0-A1E7-1738C5787A70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E02D3F07-5D5F-46C0-A1E7-1738C5787A70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E02D3F07-5D5F-46C0-A1E7-1738C5787A70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23C81296-3D21-4805-82F3-BEB8DC9C0804}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23C81296-3D21-4805-82F3-BEB8DC9C0804}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23C81296-3D21-4805-82F3-BEB8DC9C0804}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23C81296-3D21-4805-82F3-BEB8DC9C0804}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,6 +121,8 @@ Global
 		{2C405711-E179-4C9B-B10B-A125E9DE45D1} = {0DA0CBB5-74D8-40A2-9F6F-DA1966E1EF85}
 		{5C5C0C2C-051F-430C-823F-802613845ABD} = {0DA0CBB5-74D8-40A2-9F6F-DA1966E1EF85}
 		{9B582C5A-BB0B-4DB8-841D-FDC7FFCFF646} = {5A82ACC1-5698-40E8-9F98-1D56372D6E3C}
+		{E02D3F07-5D5F-46C0-A1E7-1738C5787A70} = {0DA0CBB5-74D8-40A2-9F6F-DA1966E1EF85}
+		{23C81296-3D21-4805-82F3-BEB8DC9C0804} = {0DA0CBB5-74D8-40A2-9F6F-DA1966E1EF85}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F06D3E89-846C-4FE1-863E-03C5D78BF786}

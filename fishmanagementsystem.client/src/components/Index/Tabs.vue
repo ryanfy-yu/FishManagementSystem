@@ -15,8 +15,7 @@
               </span>
             </template>
             <el-scrollbar>
-              <component :is="LoginView" />
-              <!-- {{ item.content }} -->
+              <router-view name="dataList" />
             </el-scrollbar>
           </el-tab-pane>
         </template>
@@ -34,11 +33,10 @@
 </template>
 
 <script lang="ts" setup>
-import DataTable from '@/components/DataTable/DataTable.vue';
+// import DataTable from '@/components/DataTable/DataTable.vue';
 import { ref } from 'vue'
 import { useHomeTabsStore } from "@/stores/homeTabs"
 import { useHomeMenusStore } from "@/stores/homeMenus"
-import LoginView from '@/views/LoginView.vue'
 
 
 let homeTabsStore = useHomeTabsStore()
@@ -49,9 +47,13 @@ const useFullScreen = () => {
   isfullScreenMode.value = !isfullScreenMode.value
 }
 
-const tabChange = (name: any) => {
+const tabChange = (name: number) => {
 
-  //homeMenusStore.defaultActive = name
+  const activeTab = homeTabsStore.tabsData.find(o => o.name == name)
+
+  if (activeTab) {
+    homeMenusStore.defaultActive = activeTab.menuIndex
+  }
 }
 
 
