@@ -13,11 +13,14 @@ namespace FishManagementSystem.DBModels.Utils
         //数据是自增需要加上IsIdentity 
         //数据库是主键需要加上IsPrimaryKey 
         //注意：要完全和数据库一致2个属性
-        [SugarColumn(IsPrimaryKey = true)]
-        public new string Id { get; set; } = Guid.NewGuid().ToString();
+        [SugarColumn(IsPrimaryKey = true, DefaultValue = "UUID()", IsOnlyIgnoreInsert = true)]
 
-        public new DateTime CreateDate { get; set; } = DateTime.Now;
+        public new string Id { get; set; }
 
+        [SugarColumn(DefaultValue = "NOW()", IsOnlyIgnoreInsert = true)]
+        public new DateTime CreateDate { get; set; }
+
+        [SugarColumn(DefaultValue = "NOW()", IsOnlyIgnoreInsert = true)]
         public new DateTime UpdateDate { get; set; } = DateTime.Now;
 
         public new bool IsDeleted { get; set; } = false;

@@ -24,7 +24,7 @@ namespace FishManagementSystem.IoC
 
             //builder.RegisterType<DataService>().As<IDataService>().EnableInterfaceInterceptors();
 
-            builder.RegisterType<BaseDataService>().As<IBaseDataService>().WithParameter("dbConnectionString", _config.GetConnectionString("FishDB") ?? string.Empty);
+            builder.RegisterType<DataService>().As<IDataService>().WithParameter("dbConnectionString", _config.GetConnectionString("FishDB") ?? string.Empty);
         }
 
 

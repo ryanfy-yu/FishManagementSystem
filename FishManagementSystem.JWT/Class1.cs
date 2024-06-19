@@ -3,20 +3,27 @@ using System.Text;
 
 namespace FishManagementSystem.JWT
 {
-    public class Class1
+    public class JwtConfig
     {
-
+        /// <summary>
+        /// 密钥
+        /// </summary>
         public string SecretKey { get; set; }
+
+        /// <summary>
+        /// 发布者
+        /// </summary>
         public string Issuer { get; set; }
+
+        /// <summary>
+        /// 接受者
+        /// </summary>
         public string Audience { get; set; }
+
+        /// <summary>
+        /// 过期时间（min）
+        /// </summary>
         public int Expired { get; set; }
-        public DateTime NotBefore => DateTime.UtcNow;
-        public DateTime IssuedAt => DateTime.UtcNow;
-        public DateTime Expiration => IssuedAt.AddMinutes(Expired);
-        private SecurityKey SigningKey => new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SecretKey));
-        public SigningCredentials SigningCredentials =>
-            new SigningCredentials(SigningKey, SecurityAlgorithms.HmacSha256);
-
-
     }
+
 }

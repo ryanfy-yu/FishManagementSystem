@@ -16,10 +16,10 @@ namespace FishManagementSystem.Server.Controllers
     [Route("[controller]")]
     public class HomeController : FishControllerBase
     {
-        public readonly ISystemUsersDataService _dataService;
+        public readonly IDataService _dataService;
 
 
-        public HomeController(ISystemUsersDataService dataService, IMapper mapper, ILogger<HomeController> logger) : base(logger, mapper)
+        public HomeController(IDataService dataService, IMapper mapper, ILogger<HomeController> logger) : base(logger, mapper)
         {
             _dataService = dataService;
 

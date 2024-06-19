@@ -9,11 +9,11 @@ namespace FishManagementSystem.Swagger
     public static class SwaggerSetup
     {
 
-        public static void AddSwaggerSetup(this IServiceCollection services)
+        public static void AddSwaggerSetup(this IServiceCollection services,string ApiName)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            var ApiName = "File Management System";
+            //var ApiName = "File Management System";
             services.AddEndpointsApiExplorer();
 
             services.AddSwaggerGen(options =>
@@ -42,7 +42,7 @@ namespace FishManagementSystem.Swagger
                 //定义JwtBearer认证方式一
                 options.AddSecurityDefinition("JwtBearer", new OpenApiSecurityScheme()
                 {
-                    Description = "这是方式一(直接在输入框中输入认证信息，不需要在开头添加Bearer)",
+                    Description = "直接在输入框中输入认证信息，不需要添加Bearer",
                     Name = "Authorization",//jwt默认的参数名称
                     In = ParameterLocation.Header,//jwt默认存放Authorization信息的位置(请求头中)
                     Type = SecuritySchemeType.Http,

@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace FishManagementSystem.IBussinessService
 {
-    public interface IBaseDataService
+    public interface IDataService
     {
 
         public int GetCount<T>() where T : IModel, new();

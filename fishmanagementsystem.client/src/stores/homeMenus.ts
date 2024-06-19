@@ -17,7 +17,7 @@ export const useHomeMenusStore = defineStore('homeMenus', () => {
         },
         {
             index: "1",
-            title: '人员管理',
+            title: '用户管理',
             icon: 'location',
             path: '/person_manage',
             children: [

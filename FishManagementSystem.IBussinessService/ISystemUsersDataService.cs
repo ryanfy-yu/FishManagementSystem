@@ -8,11 +8,16 @@ using System.Threading.Tasks;
 
 namespace FishManagementSystem.IBussinessService
 {
-    public interface ISystemUsersDataService : IBaseDataService
+    public interface ISystemUsersDataService : IDataService
     {
 
         public TSystemUsers GetSystemUserInfo(string userid);
-        
+
+
+        public List<TSystemUsers> GetSystemUserInfoList();
+
+
+        public bool AddSystemUserInfo(string user,string pwd);
 
     }
 }

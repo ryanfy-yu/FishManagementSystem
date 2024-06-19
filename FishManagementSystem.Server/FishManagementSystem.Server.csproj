@@ -11,6 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\User\LoginController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="Configs\nLog.config" />
   </ItemGroup>
 

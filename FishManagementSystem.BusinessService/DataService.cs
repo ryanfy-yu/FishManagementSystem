@@ -9,13 +9,13 @@ using System.Linq.Expressions;
 
 namespace FishManagementSystem.BusinessService
 {
-    public class BaseDataService : IDisposable, IBaseDataService
+    public class DataService : IDisposable, IDataService
     {
 
         protected readonly ISqlSugarClient _db;
 
 
-        public BaseDataService(string dbConnectionString)
+        public DataService(string dbConnectionString)
         {
             _db = new SqlSugarSetup(dbConnectionString).getDB();
         }

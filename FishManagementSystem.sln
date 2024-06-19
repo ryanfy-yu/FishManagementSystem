@@ -37,9 +37,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishManagementSystem.Mappin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishManagementSystem.DTO", "FishManagementSystem.DTO\FishManagementSystem.DTO.csproj", "{9B582C5A-BB0B-4DB8-841D-FDC7FFCFF646}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishManagementSystem.JWT", "FishManagementSystem.JWT\FishManagementSystem.JWT.csproj", "{E02D3F07-5D5F-46C0-A1E7-1738C5787A70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishManagementSystem.JWT", "FishManagementSystem.JWT\FishManagementSystem.JWT.csproj", "{E02D3F07-5D5F-46C0-A1E7-1738C5787A70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishManagementSystem.Swagger", "FishManagementSystem.Swagger\FishManagementSystem.Swagger.csproj", "{23C81296-3D21-4805-82F3-BEB8DC9C0804}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishManagementSystem.Swagger", "FishManagementSystem.Swagger\FishManagementSystem.Swagger.csproj", "{23C81296-3D21-4805-82F3-BEB8DC9C0804}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishManagementSystem.SSO", "FishManagementSystem.SSO\FishManagementSystem.SSO.csproj", "{F68E1F99-B1BB-459F-8FB0-09301C8BAAED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{616AE589-2861-4309-8304-468D23A8A635}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,11 +109,16 @@ Global
 		{23C81296-3D21-4805-82F3-BEB8DC9C0804}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23C81296-3D21-4805-82F3-BEB8DC9C0804}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23C81296-3D21-4805-82F3-BEB8DC9C0804}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F68E1F99-B1BB-459F-8FB0-09301C8BAAED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F68E1F99-B1BB-459F-8FB0-09301C8BAAED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F68E1F99-B1BB-459F-8FB0-09301C8BAAED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F68E1F99-B1BB-459F-8FB0-09301C8BAAED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{6D49ABEC-9C30-4058-9D4A-B590BB62ED52} = {616AE589-2861-4309-8304-468D23A8A635}
 		{5887E0BB-5D69-4C41-AA78-F3E4F599DC78} = {8AB280F6-D3C0-4CC4-AE5E-C125769A9E37}
 		{9507A9DE-83FC-4C58-BF1F-14E9DD24CD0E} = {5A82ACC1-5698-40E8-9F98-1D56372D6E3C}
 		{463E4F11-0CDF-4C07-8238-6B2A12923390} = {35D9D169-D56E-4413-A7AE-47F467F7196D}
@@ -123,6 +132,7 @@ Global
 		{9B582C5A-BB0B-4DB8-841D-FDC7FFCFF646} = {5A82ACC1-5698-40E8-9F98-1D56372D6E3C}
 		{E02D3F07-5D5F-46C0-A1E7-1738C5787A70} = {0DA0CBB5-74D8-40A2-9F6F-DA1966E1EF85}
 		{23C81296-3D21-4805-82F3-BEB8DC9C0804} = {0DA0CBB5-74D8-40A2-9F6F-DA1966E1EF85}
+		{F68E1F99-B1BB-459F-8FB0-09301C8BAAED} = {616AE589-2861-4309-8304-468D23A8A635}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F06D3E89-846C-4FE1-863E-03C5D78BF786}
