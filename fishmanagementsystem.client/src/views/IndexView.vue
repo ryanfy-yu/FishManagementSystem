@@ -24,9 +24,10 @@
 </template>
 
 <script lang="ts" setup>
-import HomeMenus from '@/components/Index/Menus.vue';
-import HomeHeader from '@/components/Index/Header.vue';
-import HomeTabs from '@/components/Index/Tabs.vue';
+import HomeMenus from '@/components/Index/Menus.vue'
+import HomeHeader from '@/components/Index/Header.vue'
+import HomeTabs from '@/components/Index/Tabs.vue'
+
 </script>
 
 

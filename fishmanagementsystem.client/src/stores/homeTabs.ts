@@ -1,12 +1,15 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import { useHomeMenusStore } from "@/stores/homeMenus"
 import { useRoute, useRouter } from 'vue-router'
+
 
 // 你可以任意命名 `defineStore()` 的返回值，但最好使用 store 的名字，同时以 `use` 开头且以 `Store` 结尾。
 // (比如 `useUserStore`，`useCartStore`，`useProductStore`)
 // 第一个参数是你的应用中 Store 的唯一 ID。
 export const useHomeTabsStore = defineStore('homeTabs', () => {
-
+    const router = useRouter()
+    const homeMenusStore = useHomeMenusStore()
     //定义tab内容结构
     type TabType = {
         menuIndex: string,
@@ -20,9 +23,6 @@ export const useHomeTabsStore = defineStore('homeTabs', () => {
     const activeTab = ref(0)
     let tabIndex = 0;//获取最大tabindex数
 
-
-
-
     const tabsData = ref<TabType[]>([])
 
     const removeTab = (targetName: number) => {
@@ -33,6 +33,7 @@ export const useHomeTabsStore = defineStore('homeTabs', () => {
                 if (tab.name === targetName) {
                     const nextTab = tabs[index + 1] || tabs[index - 1]
                     if (nextTab) {
+                        router.push(nextTab.path)
                         activeName = nextTab.name
                     }
                 }
@@ -50,7 +51,7 @@ export const useHomeTabsStore = defineStore('homeTabs', () => {
         if (tab == undefined) {
 
             const netTabname = tabIndex++
-            activeTab.value = netTabname//new Number(tabItem.name).valueOf()
+            activeTab.value = netTabname
             tabsData.value.push({
                 menuIndex: menuEntity.index,
                 title: menuEntity.title,
@@ -60,9 +61,11 @@ export const useHomeTabsStore = defineStore('homeTabs', () => {
                 path: menuEntity.path,
                 isCloseable: menuEntity.isCloseable
             });
-            //useRouter().push("/")
+
+            router.push(menuEntity.path)
 
         } else {
+            router.push(tab.path)
             activeTab.value = tab.name
         }
     }

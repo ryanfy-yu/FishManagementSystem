@@ -11,18 +11,20 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'index',
       component: IndexView,
-      meta: { isAuth: true, title: 'Index' },
       children: [
         {
-          name: 'tabs',
-          path: '/',
-          components: {
-            "login": () => LoginView,
-            "home": () => import('../views/HomeView.vue'),
-            "dataList": () => import('../views/HomeView.vue'),
-          },
+          path: 'datalist',
+          component: DataTable
+        },
+        {
+          path: 'home',
+          component: HomeView
+        },
+        {
+          path: '/:catchAll(.*)', 
+          component: () => import('../views/Error.vue')
+
         }
       ]
     },

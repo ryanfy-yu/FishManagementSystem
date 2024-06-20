@@ -14,12 +14,15 @@
                 <span>{{ item.title }}</span>
               </span>
             </template>
-            <el-scrollbar>
-              <router-view name="dataList" />
-            </el-scrollbar>
           </el-tab-pane>
         </template>
-
+        <el-scrollbar>
+          <router-view v-slot="{ Component }">
+            <keep-alive>
+              <component :is="Component" />
+            </keep-alive>
+          </router-view>
+        </el-scrollbar>
       </el-tabs>
       <div style='position: absolute;right:10px;top:5px;'>
         <el-button @click="useFullScreen">
@@ -37,10 +40,12 @@
 import { ref } from 'vue'
 import { useHomeTabsStore } from "@/stores/homeTabs"
 import { useHomeMenusStore } from "@/stores/homeMenus"
+import { useRoute, useRouter } from 'vue-router'
 
+const homeTabsStore = useHomeTabsStore()
+const homeMenusStore = useHomeMenusStore()
+const router = useRouter()
 
-let homeTabsStore = useHomeTabsStore()
-let homeMenusStore = useHomeMenusStore()
 
 const isfullScreenMode = ref(false);
 const useFullScreen = () => {
@@ -52,10 +57,10 @@ const tabChange = (name: number) => {
   const activeTab = homeTabsStore.tabsData.find(o => o.name == name)
 
   if (activeTab) {
+    router.push(activeTab.path)
     homeMenusStore.defaultActive = activeTab.menuIndex
   }
 }
-
 
 </script>
 
@@ -72,8 +77,8 @@ const tabChange = (name: number) => {
 }
 
 .el-tab-pane {
-  height: 100%;
-  overflow: hidden;
+  /* height: 100%;
+  overflow: hidden; */
 
 }
 
