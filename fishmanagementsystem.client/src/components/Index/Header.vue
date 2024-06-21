@@ -27,7 +27,7 @@
           <el-dropdown-menu>
             <el-dropdown-item>个人资料</el-dropdown-item>
             <el-dropdown-item>锁屏</el-dropdown-item>
-            <el-dropdown-item>退出</el-dropdown-item>
+            <el-dropdown-item @click="logout">退出</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -40,6 +40,13 @@
 import { ref, watch } from 'vue'
 import { useToggle } from '@vueuse/shared'
 import { useDark } from "@vueuse/core"
+
+
+const logout = ()=>{
+
+  alert("注销")
+
+}
 
 
 const activeIndex = ref('1')

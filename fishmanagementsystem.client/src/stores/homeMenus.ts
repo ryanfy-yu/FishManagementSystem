@@ -21,7 +21,7 @@ export const useHomeMenusStore = defineStore('homeMenus', () => {
         {
             index: "/system_manage",
             title: '系统管理',
-            icon: 'Settings',
+            icon: 'Setting',
             path: '/system_manage',
             children: [
                 {
@@ -29,14 +29,12 @@ export const useHomeMenusStore = defineStore('homeMenus', () => {
                     title: '用户管理',
                     icon: 'Document',
                     path: '/datalist',
-
                 },
                 {
                     index: '/person_involfved',
                     title: '菜单管理',
                     icon: 'Document',
                     path: '/person_involfved',
-
                 }
             ]
         },

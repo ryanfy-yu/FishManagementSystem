@@ -15,15 +15,15 @@ namespace FishManagementSystem.DBModels.Utils
         //注意：要完全和数据库一致2个属性
         [SugarColumn(IsPrimaryKey = true, DefaultValue = "UUID()", IsOnlyIgnoreInsert = true)]
 
-        public new string Id { get; set; }
+        public string Id { get; set; }
 
         [SugarColumn(DefaultValue = "NOW()", IsOnlyIgnoreInsert = true)]
-        public new DateTime CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
 
         [SugarColumn(DefaultValue = "NOW()", IsOnlyIgnoreInsert = true)]
-        public new DateTime UpdateDate { get; set; } = DateTime.Now;
+        public DateTime UpdateDate { get; set; } = DateTime.Now;
 
-        public new bool IsDeleted { get; set; } = false;
+        public virtual bool IsDeleted { get; set; } = false;
 
     }
 }

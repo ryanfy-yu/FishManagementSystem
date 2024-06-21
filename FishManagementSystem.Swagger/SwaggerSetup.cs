@@ -9,7 +9,7 @@ namespace FishManagementSystem.Swagger
     public static class SwaggerSetup
     {
 
-        public static void AddSwaggerSetup(this IServiceCollection services,string ApiName)
+        public static void AddSwaggerSetup(this IServiceCollection services, string ApiName)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
@@ -39,15 +39,28 @@ namespace FishManagementSystem.Swagger
 
                 }
 
-                //定义JwtBearer认证方式一
-                options.AddSecurityDefinition("JwtBearer", new OpenApiSecurityScheme()
+                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
-                    Description = "直接在输入框中输入认证信息，不需要添加Bearer",
-                    Name = "Authorization",//jwt默认的参数名称
-                    In = ParameterLocation.Header,//jwt默认存放Authorization信息的位置(请求头中)
-                    Type = SecuritySchemeType.Http,
-                    Scheme = "bearer"
+                    Description = "在下框中输入请求头中需要添加Jwt授权Token：Bearer Token",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    BearerFormat = "JWT",
+                    Scheme = "Bearer"
                 });
+
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement
+                    {
+                        {
+                            new OpenApiSecurityScheme{
+                                Reference = new OpenApiReference {
+                                            Type = ReferenceType.SecurityScheme,
+                                            Id = "Bearer"}
+                           },new string[] { }
+                        }
+                    });
+
+
 
 
                 //获取注释

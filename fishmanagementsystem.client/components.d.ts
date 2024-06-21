@@ -15,6 +15,8 @@ declare module 'vue' {
     DataList: typeof import('./src/components/DataList.vue')['default']
     DataSearch: typeof import('./src/components/DataTable/DataSearch.vue')['default']
     DataTable: typeof import('./src/components/DataTable/DataTable.vue')['default']
+    Detail: typeof import('./src/components/DataTable/detail.vue')['default']
+    Edit: typeof import('./src/components/DataTable/Edit.vue')['default']
     ElAffix: typeof import('element-plus/es')['ElAffix']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']

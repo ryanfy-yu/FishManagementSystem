@@ -3,7 +3,10 @@ using Autofac.Extensions.DependencyInjection;
 using FishManagementSystem.IoC;
 using FishManagementSystem.Mapping;
 using FishManagementSystem.Swagger;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using NLog.Extensions.Logging;
+using System.Text;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -81,6 +84,8 @@ builder.Services.AddCors(options =>
 #region JWT
 
 
+builder.Services.AddAuthenticationExt(builder.Configuration);
+
 #endregion
 
 
@@ -96,6 +101,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+//∆Ù”√»œ÷§
+app.UseAuthentication();
 
 app.UseAuthorization();
 

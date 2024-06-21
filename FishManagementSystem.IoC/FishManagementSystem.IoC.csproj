@@ -16,6 +16,7 @@
     <ProjectReference Include="..\FishManagementSystem.DBModels\FishManagementSystem.DBModels.csproj" />
     <ProjectReference Include="..\FishManagementSystem.IBussinessService\FishManagementSystem.IBussinessService.csproj" />
     <ProjectReference Include="..\FishManagementSystem.IDBModels\FishManagementSystem.IDBModels.csproj" />
+    <ProjectReference Include="..\FishManagementSystem.JWT\FishManagementSystem.JWT.csproj" />
   </ItemGroup>
 
 </Project>

@@ -51,7 +51,7 @@
 <style scoped></style>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref,onMounted  } from 'vue';
 import DataSearch from '@/components/DataTable/DataSearch.vue';
 import TableButtons from '@/components/DataTable/TableButtons.vue'
 import TablePagination from '@/components/DataTable/TablePagination.vue'
@@ -63,6 +63,15 @@ import {
   Share,
   Search
 } from '@element-plus/icons-vue'
+
+
+onMounted(()=>{
+
+  alert("onMounted")
+
+})
+
+
 
 const tableData = [
   {
@@ -414,4 +423,9 @@ const handleSizeChange = (val: number) => {
 const handleCurrentChange = (val: number) => {
   console.log(`current page: ${val}`)
 }
+
+
+
+
+
 </script>

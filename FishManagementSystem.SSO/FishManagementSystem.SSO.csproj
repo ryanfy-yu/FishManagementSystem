@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FishManagementSystem.AOP\FishManagementSystem.AOP.csproj" />
+    <ProjectReference Include="..\FishManagementSystem.Commons\FishManagementSystem.Commons.csproj" />
     <ProjectReference Include="..\FishManagementSystem.IoC\FishManagementSystem.IoC.csproj" />
     <ProjectReference Include="..\FishManagementSystem.JWT\FishManagementSystem.JWT.csproj" />
     <ProjectReference Include="..\FishManagementSystem.Swagger\FishManagementSystem.Swagger.csproj" />

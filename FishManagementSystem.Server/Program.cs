@@ -79,6 +79,9 @@ builder.Services.AddCors(options =>
 #region JWT
 
 
+builder.Services.AddAuthenticationExt(builder.Configuration);
+
+
 #endregion
 
 
@@ -98,7 +101,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 
-//app.UseAuthentication();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

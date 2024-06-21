@@ -23,12 +23,12 @@ const router = createRouter({
         },
         {
           path: '/:catchAll(.*)', 
-          component: () => import('../views/Error.vue')
+          component: () => import('@/views/Error.vue')
 
         }
       ]
     },
-    { path: '/error', component: () => import('../views/Error.vue') },
+    { path: '/error', component: () => import('@/views/Error.vue') },
     { path: '/:catchAll(.*)', redirect: '/error' },
     {
       path: '/login',

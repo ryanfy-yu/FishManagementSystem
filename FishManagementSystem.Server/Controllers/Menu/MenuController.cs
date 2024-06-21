@@ -28,7 +28,7 @@ namespace FishManagementSystem.Server.Controllers.Menu
 
 
         /// <summary>
-        /// GetSystemUsers
+        /// GetSystemMenuList
         /// </summary>
         /// <returns></returns>
         [HttpGet(Name = "GetMenuList")]
@@ -36,13 +36,13 @@ namespace FishManagementSystem.Server.Controllers.Menu
         public ApiResult GetSystemMenuList()
         {
             //_logger.LogInformation("i am here");
-            var data = _dataService.Get<TSystemMenus>();
+            var tData = _dataService.Get<TSystemMenus>();
 
-            // var dtoData = _mapper.Map<List<TSystemMenus>>(data);
+            var dataList = _mapper.Map<List<TSystemMenus>>(tData);
 
             return new ApiResult()
             {
-                Data = data,
+                Data = dataList,
                 IsSuccess = true,
 
             };
@@ -61,10 +61,7 @@ namespace FishManagementSystem.Server.Controllers.Menu
 
             _dataService.Add<TSystemMenus>(menu);
 
-
             var data = _dataService.Get<TSystemMenus>();
-
-            // var dtoData = _mapper.Map<List<SystemUsersDTO>>(data);
 
             return new ApiResult()
             {
@@ -74,7 +71,5 @@ namespace FishManagementSystem.Server.Controllers.Menu
             };
 
         }
-
-
     }
 }

@@ -20,7 +20,7 @@ namespace FishManagementSystem.Mapping
 
             // Mapping
             CreateMap<TSystemUsers, SystemUsersDTO>().ReverseMap();
-
+            CreateMap<TSystemMenus, SystemMenusDto>().ReverseMap();
 
 
         }
