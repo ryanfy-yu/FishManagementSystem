@@ -81,7 +81,7 @@ builder.Services.AddCors(options =>
 #endregion
 
 
-#region JWT
+#region AuthenticationExt for JWT
 
 
 builder.Services.AddAuthenticationExt(builder.Configuration);
