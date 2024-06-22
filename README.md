@@ -5,3 +5,9 @@
 # 前端使用 Vue 3 + element plus UI + axios
 
 # 后端使用 Asp.net Core 8.0, Swagger, SqlSugar, log4net, nlog 双日志集成，Autofac, AutoMapper
+
+#docker
+
+SSO API： 
+cd FishManagementSystem.SSO/
+docker build -t sso -f FishManagementSystem.SSO/Dockerfile .

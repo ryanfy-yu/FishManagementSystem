@@ -10,7 +10,7 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
-COPY . ./
+COPY . .
 
 #COPY ["FishManagementSystem.SSO/FishManagementSystem.SSO.csproj", "FishManagementSystem.SSO/"]
 #COPY ["FishManagementSystem.AOP/FishManagementSystem.AOP.csproj", "FishManagementSystem.AOP/"]
